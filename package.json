@@ -2,12 +2,14 @@
   "name": "auth-express",
   "version": "1.0.0",
   "author": "Sanjarbek",
+  "baseUrl": ".",
   "scripts": {
     "start": "node index",
     "dev": "nodemon index"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "express-async-errors": "^3.1.1",
     "joi": "^17.6.0",
