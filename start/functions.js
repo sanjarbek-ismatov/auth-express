@@ -1,6 +1,11 @@
-import { User } from "../models/User";
+const User = require("../models/User");
+const bcrypt = require("bcrypt");
+async function createUser(body) {
+  const salt = await bcrypt.genSalt();
+  const hashed = await bcrypt.hash(body.password, salt);
 
-export async function createUser(body) {
-  await new User(body).save();
-  return true;
+  const user = await new User(body);
+  user.password = hashed;
+  user.save();
 }
+module.exports.createUser = createUser;
