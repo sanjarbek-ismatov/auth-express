@@ -11,4 +11,13 @@ const registerValidator = (body) => {
   });
   return schema.validate(body);
 };
+const loginValidator = (body) => {
+  const schema = Joi.object({
+    email: Joi.string().required(),
+
+    password: Joi.string().required().min(8),
+  });
+  return schema.validate(body);
+};
+module.exports.loginValidator = loginValidator;
 module.exports.registerValidator = registerValidator;
