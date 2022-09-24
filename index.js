@@ -1,8 +1,9 @@
 const app = require("express")();
 
 require("./start/logger")();
-require("./start/db")();
+// require("./start/db")();
 require("./start/routes")(app);
+require("./production")(app);
 require("dotenv").config();
 if (process.env.NODE_ENV === "production") {
   console.log = (x) => {
@@ -10,4 +11,4 @@ if (process.env.NODE_ENV === "production") {
   };
 }
 
-app.listen(process.env.PORT || 5000, () => console.log("Server ishlamoqda"));
+app.listen(process.env.PORT, () => console.log("Server ishlamoqda"));
